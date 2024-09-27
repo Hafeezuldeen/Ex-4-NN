@@ -159,7 +159,8 @@ print(report)
 ```
 
 <H3>Output:</H3>
-![Screenshot 2024-09-27 093449](https://github.com/user-attachments/assets/27015934-b1e1-46c3-b7d0-c72e65f8e995)
+
+![Screenshot 2024-09-27 093449](https://github.com/user-attachments/assets/5137d050-cd09-43aa-9be0-89ce5deb0873)
 
 
 
