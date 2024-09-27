@@ -124,12 +124,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
-url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
-irisdata = pd.read_csv(url, names=names)
+file_path = "/content/Iris.csv"
 
-X = irisdata.iloc[:, 0:4]
-y = irisdata['Class']
+irisdata = pd.read_csv(file_path)
+
+X = irisdata[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
+y = irisdata['Species']
 
 le = preprocessing.LabelEncoder()
 y_encoded = le.fit_transform(y)
@@ -145,18 +145,23 @@ mlp = MLPClassifier(hidden_layer_sizes=(10, 10, 10), max_iter=1000)
 mlp.fit(X_train, y_train)
 
 predictions = mlp.predict(X_test)
-
 flower_predictions = le.inverse_transform(predictions)
 
+print("Predicted Flower Names:")
+print(flower_predictions)
 
-print(flower_predictions)  
+print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, predictions))
-print(classification_report(y_test, predictions))
+
+report = classification_report(y_test, predictions, target_names=le.classes_)
+print("\nClassification Report:")
+print(report)
 ```
 
 <H3>Output:</H3>
+![Screenshot 2024-09-27 093449](https://github.com/user-attachments/assets/27015934-b1e1-46c3-b7d0-c72e65f8e995)
 
-![Screenshot 2024-09-27 090101](https://github.com/user-attachments/assets/6e5dcf13-00ef-4b49-a09c-75cbf7de0ebd)
+
 
 
 
